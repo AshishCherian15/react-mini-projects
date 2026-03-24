@@ -1,38 +1,49 @@
-# Todo List
+# 📝 Todo List
 
-A React todo mini project with task lifecycle controls, filtering, and localStorage persistence.
+React mini project for task management with filters and local storage support.
 
-## Live Demo
-- Add your Vercel link after deployment.
+## 📌 Project Type
 
-## Screenshot
-- Add a screenshot file in this folder (recommended name: `TODO.jpeg`) and link it here.
+- Original source assignment version: `TodoApp.jsx`
+- HTML website-style version for live demo: `index.html`
 
-## Features
-- Add tasks with Enter key support
-- Toggle completed state
+## 🖼️ Screenshot
+
+![Todo UI](./TODO.jpeg)
+
+## 🚀 Live Demo
+
+- Vercel: *(Add URL after deployment)*
+
+## ✨ Features
+
+- Add tasks with keyboard support
+- Mark task done/undone
 - Delete individual tasks
-- Filter: all, active, completed
+- Filter by all, active, completed
 - Clear completed tasks
-- localStorage persistence
+- Persistent state with `localStorage`
 
-## Project Files
-- `TodoApp.jsx` - Original React component (CLI/source version)
-- `index.html` - Website-style runnable version for browser/Vercel
-- `README.md` - Project documentation
+## 🛠️ Run Locally
 
-## Run Locally
-### Website-style version
+### HTML website-style live demo
 1. Open `index.html` in your browser.
 
-### Component/source version
-1. Create or open a React app.
-2. Replace `src/App.jsx` with `TodoApp.jsx` content.
+### React source version
+1. Create/open a React app.
+2. Replace `src/App.jsx` with `TodoApp.jsx`.
 3. Run `npm install` and `npm run dev` (or `npm start` for CRA).
 
-## Deploy to Vercel
-Use `index.html` for a static deployment:
-1. Set this folder as the Vercel root.
+## 🌐 Deploy (Vercel)
+
+1. Select `TO DO/` as root directory.
 2. Build command: *(none)*
 3. Output directory: `.`
-4. Deploy.
+4. Deploy (serves `index.html` as live demo UI).
+
+## 📁 Files
+
+- `TodoApp.jsx`
+- `index.html`
+- `TODO.jpeg`
+- `README.md`

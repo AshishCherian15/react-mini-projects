@@ -1,32 +1,41 @@
-# Profile Card
+# 🪪 Profile Card
 
-A React profile card mini project with live preview and dark/light mode toggle.
+React mini project with real-time profile preview and dark/light theme support.
 
-## Live Demo
-- Add your Vercel link after deployment.
+## 📌 Project Type
 
-## Screenshot
+- Original assignment version: `ProfileCard.html`
+- HTML website-style version for live demo: `ProfileCard.html`
+
+## 🖼️ Screenshot
+
 ![Profile Card UI](./PROFILECARD.jpeg)
 
-## Features
-- Real-time profile preview while typing
-- Dynamic avatar initials
-- Dark/light theme toggle
-- Responsive two-panel layout
+## 🚀 Live Demo
 
-## Project Files
-- `ProfileCard.html` - Original project file
-- `README.md` - Project documentation
+- Vercel: *(Add URL after deployment)*
 
-## Run Locally
+## ✨ Features
+
+- Live preview while typing user details
+- Auto-generated initials avatar
+- Dark and light mode toggle
+- Responsive card layout
+
+## 🛠️ Run Locally
+
 1. Open `ProfileCard.html` in your browser.
-2. Update profile fields and view changes live.
+2. Edit fields and verify instant UI updates.
 
-## Deploy to Vercel
-1. Set this folder as a Vercel project root.
+## 🌐 Deploy (Vercel)
+
+1. Select `Profile-card/` as root directory.
 2. Build command: *(none)*
 3. Output directory: `.`
 4. Deploy.
 
-## Notes
-This is a static React app (React + Babel via CDN), so it is deployment-ready without a bundler.
+## 📁 Files
+
+- `ProfileCard.html`
+- `PROFILECARD.jpeg`
+- `README.md`

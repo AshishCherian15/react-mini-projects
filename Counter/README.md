@@ -1,31 +1,40 @@
-# Counter App
+# 🔢 Counter App
 
-A React counter mini project built with CDN-based React (no npm setup required).
+React mini project built with React CDN + Babel (no npm setup required).
 
-## Live Demo
-- Add your Vercel link after deployment.
+## 📌 Project Type
 
-## Screenshot
+- Original assignment version: `counter-app.html`
+- HTML website-style version for live demo: `counter-app.html`
+
+## 🖼️ Screenshot
+
 ![Counter UI](./COUNTER.jpeg)
 
-## Features
-- Increment, decrement, and reset actions
-- Prevents negative values
-- Visual state change when count is high
+## 🚀 Live Demo
 
-## Project Files
-- `counter-app.html` - Original project file
-- `README.md` - Project documentation
+- Vercel: *(Add URL after deployment)*
 
-## Run Locally
+## ✨ Features
+
+- Increment, decrement, and reset controls
+- Guard against negative values
+- Visual highlight when count crosses threshold
+
+## 🛠️ Run Locally
+
 1. Open `counter-app.html` in your browser.
-2. Use the buttons to interact with the counter.
+2. Interact with buttons to test all actions.
 
-## Deploy to Vercel
-1. Set this folder as a Vercel project root.
+## 🌐 Deploy (Vercel)
+
+1. Select `Counter/` as root directory.
 2. Build command: *(none)*
 3. Output directory: `.`
 4. Deploy.
 
-## Notes
-This is a static React app (React + Babel via CDN), so it is deployment-ready without a bundler.
+## 📁 Files
+
+- `counter-app.html`
+- `COUNTER.jpeg`
+- `README.md`
