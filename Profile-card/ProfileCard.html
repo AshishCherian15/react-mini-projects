@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Card</title>
+  <style>
+    body { margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function ProfileCard() {
+      const [name, setName]   = useState("");
+      const [age, setAge]     = useState("");
+      const [city, setCity]   = useState("");
+      const [bio, setBio]     = useState("");
+      const [dark, setDark]   = useState(false);
+
+      const initials = name
+        .trim()
+        .split(" ")
+        .map((w) => w[0])
+        .join("")
+        .toUpperCase()
+        .slice(0, 2) || "?";
+
+      const theme = {
+        bg:        dark ? "#0f172a" : "#f0f4f8",
+        surface:   dark ? "#1e293b" : "#ffffff",
+        card:      dark ? "#1e293b" : "#ffffff",
+        border:    dark ? "#334155" : "#e2e8f0",
+        text:      dark ? "#f1f5f9" : "#1e293b",
+        muted:     dark ? "#94a3b8" : "#64748b",
+        accent:    "#3b82f6",
+        accentHov: "#2563eb",
+        avatar:    dark ? "#334155" : "#dbeafe",
+        avatarTxt: dark ? "#93c5fd" : "#1d4ed8",
+        inputBg:   dark ? "#0f172a" : "#f8fafc",
+        toggleBg:  dark ? "#334155" : "#e2e8f0",
+      };
+
+      const styles = {
+        page: {
+          minHeight: "100vh",
+          background: theme.bg,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "24px 16px",
+          fontFamily: "'Segoe UI', sans-serif",
+          transition: "background 0.3s",
+        },
+        topBar: {
+          width: "100%",
+          maxWidth: "860px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "24px",
+        },
+        appTitle: {
+          fontSize: "1.1rem",
+          fontWeight: "700",
+          color: theme.accent,
+          letterSpacing: "0.3px",
+        },
+        toggle: {
+          background: theme.toggleBg,
+          border: "none",
+          borderRadius: "20px",
+          padding: "7px 16px",
+          cursor: "pointer",
+          fontSize: "0.85rem",
+          fontWeight: "600",
+          color: theme.text,
+          transition: "background 0.3s, color 0.3s",
+        },
+        layout: {
+          width: "100%",
+          maxWidth: "860px",
+          display: "flex",
+          gap: "24px",
+          alignItems: "flex-start",
+          flexWrap: "wrap",
+        },
+        formBox: {
+          flex: "1 1 320px",
+          background: theme.surface,
+          borderRadius: "14px",
+          border: `1px solid ${theme.border}`,
+          padding: "28px 24px",
+          boxShadow: dark
+            ? "0 4px 24px rgba(0,0,0,0.4)"
+            : "0 4px 20px rgba(0,0,0,0.07)",
+          transition: "background 0.3s, border 0.3s",
+        },
+        formTitle: {
+          fontSize: "1rem",
+          fontWeight: "700",
+          color: theme.text,
+          marginBottom: "20px",
+        },
+        label: {
+          display: "block",
+          fontSize: "0.78rem",
+          fontWeight: "600",
+          color: theme.muted,
+          marginBottom: "5px",
+          textTransform: "uppercase",
+          letterSpacing: "0.5px",
+        },
+        input: {
+          width: "100%",
+          padding: "10px 12px",
+          borderRadius: "8px",
+          border: `1px solid ${theme.border}`,
+          background: theme.inputBg,
+          color: theme.text,
+          fontSize: "0.95rem",
+          marginBottom: "16px",
+          outline: "none",
+          transition: "border 0.2s",
+        },
+        textarea: {
+          width: "100%",
+          padding: "10px 12px",
+          borderRadius: "8px",
+          border: `1px solid ${theme.border}`,
+          background: theme.inputBg,
+          color: theme.text,
+          fontSize: "0.95rem",
+          marginBottom: "16px",
+          outline: "none",
+          resize: "none",
+          height: "80px",
+          transition: "border 0.2s",
+          fontFamily: "inherit",
+        },
+        card: {
+          flex: "1 1 280px",
+          background: theme.card,
+          borderRadius: "14px",
+          border: `1px solid ${theme.border}`,
+          padding: "32px 24px",
+          boxShadow: dark
+            ? "0 4px 24px rgba(0,0,0,0.4)"
+            : "0 4px 20px rgba(0,0,0,0.07)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
+          transition: "background 0.3s, border 0.3s",
+          minHeight: "320px",
+          justifyContent: "center",
+        },
+        avatar: {
+          width: "88px",
+          height: "88px",
+          borderRadius: "50%",
+          background: theme.avatar,
+          color: theme.avatarTxt,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: "1.8rem",
+          fontWeight: "700",
+          marginBottom: "18px",
+          border: `3px solid ${theme.accent}`,
+          letterSpacing: "1px",
+        },
+        cardName: {
+          fontSize: "1.35rem",
+          fontWeight: "700",
+          color: theme.text,
+          marginBottom: "4px",
+        },
+        cardCity: {
+          fontSize: "0.88rem",
+          color: theme.accent,
+          marginBottom: "14px",
+          fontWeight: "500",
+        },
+        cardBio: {
+          fontSize: "0.88rem",
+          color: theme.muted,
+          lineHeight: "1.6",
+          marginBottom: "18px",
+          maxWidth: "240px",
+        },
+        badge: {
+          background: dark ? "#1e3a5f" : "#dbeafe",
+          color: theme.accent,
+          borderRadius: "20px",
+          padding: "5px 16px",
+          fontSize: "0.82rem",
+          fontWeight: "600",
+        },
+        placeholder: {
+          color: theme.muted,
+          fontSize: "0.9rem",
+          lineHeight: "1.6",
+        },
+        liveTag: {
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "5px",
+          fontSize: "0.7rem",
+          color: "#22c55e",
+          fontWeight: "700",
+          textTransform: "uppercase",
+          letterSpacing: "0.5px",
+          marginBottom: "20px",
+        },
+        dot: {
+          width: "7px",
+          height: "7px",
+          borderRadius: "50%",
+          background: "#22c55e",
+        },
+      };
+
+      const hasData = name || age || city || bio;
+
+      return (
+        <div style={styles.page}>
+          <div style={styles.topBar}>
+            <span style={styles.appTitle}>🪪 Profile Card Builder</span>
+            <button style={styles.toggle} onClick={() => setDark(!dark)}>
+              {dark ? "☀️ Light Mode" : "🌙 Dark Mode"}
+            </button>
+          </div>
+
+          <div style={styles.layout}>
+            <div style={styles.formBox}>
+              <p style={styles.formTitle}>✏️ Fill in your details</p>
+
+              <label style={styles.label}>Full Name</label>
+              <input
+                style={styles.input}
+                type="text"
+                placeholder="Ashish Cherian"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+
+              <label style={styles.label}>Age</label>
+              <input
+                style={styles.input}
+                type="number"
+                placeholder="e.g. 21"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+              />
+
+              <label style={styles.label}>City</label>
+              <input
+                style={styles.input}
+                type="text"
+                placeholder="Mangalore"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
+
+              <label style={styles.label}>Short Bio</label>
+              <textarea
+                style={styles.textarea}
+                placeholder="CSE student who loves coding and coffee ☕"
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+              />
+            </div>
+
+            <div style={styles.card}>
+              <div style={styles.liveTag}>
+                <div style={styles.dot}></div>
+                Live Preview
+              </div>
+
+              {hasData ? (
+                <>
+                  <div style={styles.avatar}>{initials}</div>
+                  <p style={styles.cardName}>{name || "Your Name"}</p>
+                  {city && <p style={styles.cardCity}>📍 {city}</p>}
+                  {bio && <p style={styles.cardBio}>{bio}</p>}
+                  {age && <span style={styles.badge}>🎂 Age {age}</span>}
+                </>
+              ) : (
+                <p style={styles.placeholder}>
+                  Start typing on the left to see<br />your profile card appear here ✨
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<ProfileCard />, document.getElementById('root'));
+  </script>
+</body>
+</html>

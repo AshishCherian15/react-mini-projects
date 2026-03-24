@@ -1,0 +1,258 @@
+import { useState } from "react";
+
+// ── categories for the bonus feature ──
+const CATEGORIES = ["Food", "Transport", "Shopping", "Education", "Health", "Other"];
+
+const CATEGORY_COLORS = {
+  Food:       { bg: "#fff3e0", color: "#e67e22" },
+  Transport:  { bg: "#e8f0fe", color: "#1a73e8" },
+  Shopping:   { bg: "#fdecea", color: "#e53935" },
+  Education:  { bg: "#e8f8f5", color: "#27ae60" },
+  Health:     { bg: "#f5eef8", color: "#8e44ad" },
+  Other:      { bg: "#f0f4f8", color: "#555"    },
+};
+
+// ── load/save localStorage (bonus) ──
+function load() {
+  try { return JSON.parse(localStorage.getItem("expenses")) || []; }
+  catch { return []; }
+}
+function save(data) {
+  localStorage.setItem("expenses", JSON.stringify(data));
+}
+
+export default function App() {
+
+  // ── state ──
+  const [expenses, setExpenses]   = useState(load);
+  const [title, setTitle]         = useState("");
+  const [amount, setAmount]       = useState("");
+  const [category, setCategory]   = useState("Other");
+  const [filterCat, setFilterCat] = useState("All");
+  const [error, setError]         = useState("");
+
+  // ── add expense ──
+  function addExpense() {
+    const trimTitle = title.trim();
+    const parsedAmt = parseFloat(amount);
+
+    if (!trimTitle) { setError("Please enter a title."); return; }
+    if (isNaN(parsedAmt) || parsedAmt <= 0) { setError("Enter a valid amount greater than 0."); return; }
+
+    setError("");
+    const newExpense = {
+      id: Date.now(),
+      title: trimTitle,
+      amount: parsedAmt,
+      category,
+    };
+    const updated = [newExpense, ...expenses];
+    setExpenses(updated);
+    save(updated);
+    setTitle("");
+    setAmount("");
+    setCategory("Other");
+  }
+
+  // ── delete expense (bonus) ──
+  function deleteExpense(id) {
+    const updated = expenses.filter(e => e.id !== id);
+    setExpenses(updated);
+    save(updated);
+  }
+
+  // ── clear all ──
+  function clearAll() {
+    if (expenses.length === 0) return;
+    if (window.confirm("Clear all expenses?")) {
+      setExpenses([]);
+      save([]);
+    }
+  }
+
+  // ── Enter key support ──
+  function handleKey(e) { if (e.key === "Enter") addExpense(); }
+
+  // ── filtered list ──
+  const visible = filterCat === "All"
+    ? expenses
+    : expenses.filter(e => e.category === filterCat);
+
+  // ── totals ──
+  const grandTotal    = expenses.reduce((s, e) => s + e.amount, 0);
+  const filteredTotal = visible.reduce((s, e) => s + e.amount, 0);
+
+  // ── styles ──
+  const s = {
+    page: {
+      minHeight: "100vh",
+      background: "#f0f4f8",
+      padding: "36px 16px",
+      fontFamily: "Arial, sans-serif",
+    },
+    center: { maxWidth: "860px", margin: "0 auto" },
+    heading: { fontSize: "1.7rem", fontWeight: "bold", color: "#1a73e8", textAlign: "center", marginBottom: "4px" },
+    sub:     { fontSize: "0.85rem", color: "#888", textAlign: "center", marginBottom: "28px" },
+
+    layout: { display: "flex", gap: "22px", flexWrap: "wrap", alignItems: "flex-start" },
+
+    card: {
+      background: "#fff",
+      borderRadius: "13px",
+      boxShadow: "0 4px 16px rgba(0,0,0,0.09)",
+      padding: "26px 22px",
+    },
+
+    label: { display: "block", fontSize: "0.78rem", fontWeight: "bold", color: "#666",
+             textTransform: "uppercase", letterSpacing: "0.4px", marginBottom: "5px" },
+
+    input: { width: "100%", padding: "10px 12px", borderRadius: "8px", border: "1px solid #ccc",
+             fontSize: "0.93rem", background: "#f9f9f9", marginBottom: "14px", outline: "none",
+             fontFamily: "Arial, sans-serif" },
+
+    select: { width: "100%", padding: "10px 12px", borderRadius: "8px", border: "1px solid #ccc",
+              fontSize: "0.93rem", background: "#f9f9f9", marginBottom: "14px", outline: "none",
+              fontFamily: "Arial, sans-serif" },
+
+    btnAdd: { width: "100%", padding: "11px", background: "#1a73e8", color: "#fff", border: "none",
+              borderRadius: "8px", fontWeight: "bold", fontSize: "0.95rem", cursor: "pointer" },
+
+    errorTxt: { color: "#e53935", fontSize: "0.8rem", marginTop: "8px" },
+
+    // summary badges
+    badgesRow: { display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "20px" },
+    badge: (bg, color) => ({
+      background: bg, color, borderRadius: "20px", padding: "5px 14px",
+      fontSize: "0.8rem", fontWeight: "bold",
+    }),
+
+    // filter tabs
+    filterRow: { display: "flex", gap: "7px", flexWrap: "wrap", marginBottom: "16px" },
+    filterBtn: (active) => ({
+      padding: "5px 14px", borderRadius: "20px", cursor: "pointer", fontSize: "0.78rem",
+      fontWeight: active ? "bold" : "normal",
+      border: active ? "2px solid #1a73e8" : "2px solid #ddd",
+      background: active ? "#e8f0fe" : "#fff",
+      color: active ? "#1a73e8" : "#888",
+    }),
+
+    // expense row
+    expRow: {
+      display: "flex", alignItems: "center", gap: "12px",
+      padding: "12px 14px", borderRadius: "9px", border: "1px solid #eee",
+      marginBottom: "9px", background: "#fff",
+    },
+    catDot: (bg, color) => ({
+      width: "36px", height: "36px", borderRadius: "50%", flexShrink: 0,
+      background: bg, color, display: "flex", alignItems: "center", justifyContent: "center",
+      fontSize: "0.65rem", fontWeight: "bold", textAlign: "center", lineHeight: 1.2,
+    }),
+    expTitle: { flex: 1, fontSize: "0.92rem", fontWeight: "bold", color: "#333" },
+    expCat:   { fontSize: "0.75rem", color: "#aaa" },
+    expAmt:   { fontWeight: "bold", color: "#27ae60", fontSize: "1rem", marginRight: "8px" },
+    delBtn:   { background: "#fdecea", color: "#e53935", border: "none", borderRadius: "6px",
+                padding: "4px 10px", fontSize: "0.78rem", fontWeight: "bold", cursor: "pointer" },
+
+    emptyMsg: { textAlign: "center", color: "#bbb", fontSize: "0.9rem", padding: "24px 0" },
+
+    // total bar
+    totalBar: {
+      background: "#e8f0fe", borderRadius: "10px", padding: "14px 18px",
+      display: "flex", justifyContent: "space-between", alignItems: "center",
+      flexWrap: "wrap", gap: "8px", marginTop: "6px",
+    },
+    totalLabel: { fontSize: "0.85rem", color: "#555" },
+    totalValue: { fontSize: "1.25rem", fontWeight: "bold", color: "#1a73e8" },
+    clearBtn: { background: "none", border: "2px solid #e53935", color: "#e53935",
+                borderRadius: "7px", padding: "6px 14px", fontSize: "0.8rem",
+                fontWeight: "bold", cursor: "pointer" },
+  };
+
+  return (
+    <div style={s.page}>
+      <div style={s.center}>
+
+        <div style={s.heading}>💸 Expense Tracker</div>
+        <div style={s.sub}>Track your spending, manage your money</div>
+
+        <div style={s.layout}>
+
+          {/* ── INPUT PANEL ── */}
+          <div style={{ ...s.card, flex: "1 1 260px" }}>
+            <p style={{ fontWeight: "bold", color: "#1a73e8", marginBottom: "18px" }}>➕ Add Expense</p>
+
+            <label style={s.label}>Expense Title</label>
+            <input style={s.input} placeholder="e.g. Lunch, Bus ticket"
+              value={title} onChange={e => setTitle(e.target.value)} onKeyDown={handleKey} />
+
+            <label style={s.label}>Amount (₹)</label>
+            <input style={s.input} type="number" placeholder="e.g. 150"
+              value={amount} onChange={e => setAmount(e.target.value)} onKeyDown={handleKey} min="0" />
+
+            <label style={s.label}>Category</label>
+            <select style={s.select} value={category} onChange={e => setCategory(e.target.value)}>
+              {CATEGORIES.map(c => <option key={c}>{c}</option>)}
+            </select>
+
+            <button style={s.btnAdd} onClick={addExpense}>Add Expense</button>
+            {error && <p style={s.errorTxt}>{error}</p>}
+          </div>
+
+          {/* ── EXPENSE LIST PANEL ── */}
+          <div style={{ ...s.card, flex: "2 1 380px" }}>
+
+            {/* summary badges */}
+            <div style={s.badgesRow}>
+              <span style={s.badge("#e8f0fe", "#1a73e8")}>📋 {expenses.length} expenses</span>
+              <span style={s.badge("#eafaf1", "#27ae60")}>💰 Grand Total: ₹{grandTotal.toFixed(2)}</span>
+            </div>
+
+            {/* category filter tabs */}
+            <div style={s.filterRow}>
+              {["All", ...CATEGORIES].map(cat => (
+                <button key={cat} style={s.filterBtn(filterCat === cat)}
+                  onClick={() => setFilterCat(cat)}>
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            {/* expense rows using .map() */}
+            {visible.length === 0 ? (
+              <div style={s.emptyMsg}>
+                {filterCat === "All" ? "No expenses yet. Add one!" : `No ${filterCat} expenses.`}
+              </div>
+            ) : (
+              visible.map(exp => {
+                const c = CATEGORY_COLORS[exp.category] || CATEGORY_COLORS.Other;
+                return (
+                  <div key={exp.id} style={s.expRow}>
+                    <div style={s.catDot(c.bg, c.color)}>
+                      {exp.category.slice(0, 3).toUpperCase()}
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <div style={s.expTitle}>{exp.title}</div>
+                      <div style={s.expCat}>{exp.category}</div>
+                    </div>
+                    <span style={s.expAmt}>₹{exp.amount.toFixed(2)}</span>
+                    <button style={s.delBtn} onClick={() => deleteExpense(exp.id)}>✕</button>
+                  </div>
+                );
+              })
+            )}
+
+            {/* total bar */}
+            <div style={s.totalBar}>
+              <span style={s.totalLabel}>
+                {filterCat === "All" ? "Grand Total" : `${filterCat} Total`}
+              </span>
+              <span style={s.totalValue}>₹{filteredTotal.toFixed(2)}</span>
+              <button style={s.clearBtn} onClick={clearAll}>🗑 Clear All</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
