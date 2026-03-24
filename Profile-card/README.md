@@ -5,7 +5,7 @@ React mini project with real-time profile preview and dark/light theme support.
 ## 📌 Project Type
 
 - Original assignment version: `ProfileCard.html`
-- HTML website-style version for live demo: `ProfileCard.html`
+- HTML website-style version for live demo: `index.html`
 
 ## 🖼️ Screenshot
 
@@ -13,7 +13,7 @@ React mini project with real-time profile preview and dark/light theme support.
 
 ## 🚀 Live Demo
 
-- Vercel: *(Add URL after deployment)*
+- Vercel: [https://03-profile-card.vercel.app/](https://03-profile-card.vercel.app/) *(currently returning 404)*
 
 ## ✨ Features
 
@@ -24,7 +24,7 @@ React mini project with real-time profile preview and dark/light theme support.
 
 ## 🛠️ Run Locally
 
-1. Open `ProfileCard.html` in your browser.
+1. Open `index.html` in your browser.
 2. Edit fields and verify instant UI updates.
 
 ## 🌐 Deploy (Vercel)
@@ -37,5 +37,6 @@ React mini project with real-time profile preview and dark/light theme support.
 ## 📁 Files
 
 - `ProfileCard.html`
+- `index.html`
 - `PROFILECARD.jpeg`
 - `README.md`

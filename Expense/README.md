@@ -13,7 +13,7 @@ React mini project for expense logging, filtering, and totals with local storage
 
 ## 🚀 Live Demo
 
-- Vercel: *(Add URL after deployment)*
+- Vercel: [https://02-expense.vercel.app/](https://02-expense.vercel.app/)
 
 ## ✨ Features
 

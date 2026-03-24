@@ -1,81 +1,68 @@
-# 🎓 React Mini Projects Portfolio
+# 🎓 LetsUpgrade React Mini Projects Portfolio
 
-Portfolio repository for React mini projects completed through LetsUpgrade assignments and enhanced for live deployment.
-
-Repository: https://github.com/AshishCherian15/react-mini-projects
+### React fundamentals through interactive mini projects with deploy-ready HTML website-style demos.
 
 ## 📋 Project Overview
 
-This repository contains four React mini projects.
+This repository contains 4 React mini-projects completed as part of LetsUpgrade assignments.
 
-Each project includes:
+Each project contains:
+- ✅ Original assignment/source implementation
+- ✅ HTML website-style version for live demo deployment (`index.html`)
+- ✅ Project-level README and screenshot (`.jpeg`)
 
-- ✅ Original assignment/source implementation (kept unchanged)
-- ✅ HTML website-style version for live demo deployment (`index.html` where applicable)
-- ✅ Project-level README with setup and deployment notes
-
-## ✨ Learning Outcomes
-
-- React state management using `useState`
-- Controlled inputs and real-time UI updates
-- List rendering with `.map()` and filtering with `.filter()`
-- Persistence using `localStorage`
-- Converting component/source assignments into deployable website-style demos
+Repository: https://github.com/AshishCherian15/react-mini-projects
 
 ## 🚀 Featured Projects
 
-### 1) 🔢 Counter App
+### 🔢 Project 1: Counter App
 
-- Folder: `Counter/`
-- Original assignment file: `counter-app.html`
-- HTML website-style live demo file: `counter-app.html`
+- Original assignment file: `Counter/counter-app.html`
+- HTML website-style live demo file: `Counter/index.html`
 - Screenshot: ![Counter](./Counter/COUNTER.jpeg)
-- Project README: [Counter/README.md](./Counter/README.md)
-- Live Demo: *(Add Vercel URL after deployment)*
+- Live Demo: *(Pending update / currently returning 404)*
+- Details: [Counter/README.md](./Counter/README.md)
 
-### 2) 💸 Expense Tracker
+### 💸 Project 2: Expense Tracker
 
-- Folder: `Expense/`
-- Original source file: `ExpenseTracker.jsx`
-- HTML website-style live demo file: `index.html`
+- Original source file: `Expense/ExpenseTracker.jsx`
+- HTML website-style live demo file: `Expense/index.html`
 - Screenshot: ![Expense](./Expense/EXPENSE.jpeg)
-- Project README: [Expense/README.md](./Expense/README.md)
-- Live Demo: *(Add Vercel URL after deployment)*
+- Live Demo: [https://02-expense.vercel.app/](https://02-expense.vercel.app/)
+- Details: [Expense/README.md](./Expense/README.md)
 
-### 3) 🪪 Profile Card
+### 🪪 Project 3: Profile Card
 
-- Folder: `Profile-card/`
-- Original assignment file: `ProfileCard.html`
-- HTML website-style live demo file: `ProfileCard.html`
+- Original assignment file: `Profile-card/ProfileCard.html`
+- HTML website-style live demo file: `Profile-card/index.html`
 - Screenshot: ![Profile Card](./Profile-card/PROFILECARD.jpeg)
-- Project README: [Profile-card/README.md](./Profile-card/README.md)
-- Live Demo: *(Add Vercel URL after deployment)*
+- Live Demo: [https://03-profile-card.vercel.app/](https://03-profile-card.vercel.app/) *(currently returning 404)*
+- Details: [Profile-card/README.md](./Profile-card/README.md)
 
-### 4) 📝 Todo List
+### 📝 Project 4: Todo List
 
-- Folder: `TO DO/`
-- Original source file: `TodoApp.jsx`
-- HTML website-style live demo file: `index.html`
+- Original source file: `TO DO/TodoApp.jsx`
+- HTML website-style live demo file: `TO DO/index.html`
 - Screenshot: ![Todo](./TO%20DO/TODO.jpeg)
-- Project README: [TO DO/README.md](./TO%20DO/README.md)
-- Live Demo: *(Add Vercel URL after deployment)*
+- Live Demo: [https://04-to-do-eight.vercel.app/](https://04-to-do-eight.vercel.app/)
+- Details: [TO DO/README.md](./TO%20DO/README.md)
 
 ## 🛠️ Local Development
 
-### Open website-style demo versions
+### Run HTML website-style versions
 
-- `Counter/counter-app.html`
+- `Counter/index.html`
 - `Expense/index.html`
-- `Profile-card/ProfileCard.html`
+- `Profile-card/index.html`
 - `TO DO/index.html`
 
-### Use source component versions (Expense and Todo)
+### Run source-component versions
 
-1. Create/open a React project.
-2. Replace `src/App.jsx` with:
-	- `Expense/ExpenseTracker.jsx` (Expense)
-	- `TO DO/TodoApp.jsx` (Todo)
-3. Run project with `npm install` and `npm run dev` (or `npm start` for CRA).
+1. Create/open a React app.
+2. Replace `src/App.jsx` with either:
+   - `Expense/ExpenseTracker.jsx`
+   - `TO DO/TodoApp.jsx`
+3. Run: `npm install` then `npm run dev` (or `npm start` for CRA).
 
 ## 📁 Folder Structure
 
@@ -84,6 +71,7 @@ react-mini-projects/
 │
 ├── Counter/
 │   ├── counter-app.html
+│   ├── index.html
 │   ├── COUNTER.jpeg
 │   └── README.md
 │
@@ -95,6 +83,7 @@ react-mini-projects/
 │
 ├── Profile-card/
 │   ├── ProfileCard.html
+│   ├── index.html
 │   ├── PROFILECARD.jpeg
 │   └── README.md
 │
@@ -104,28 +93,30 @@ react-mini-projects/
 │   ├── TODO.jpeg
 │   └── README.md
 │
-├── LU.txt
 └── README.md
 ```
 
+## 🌐 Live Deployments
+
+| Project | Live URL | Status |
+|---|---|---|
+| 🔢 Counter | Pending (update after redeploy) | ⚠️ 404 |
+| 💸 Expense Tracker | https://02-expense.vercel.app/ | ✅ Live |
+| 🪪 Profile Card | https://03-profile-card.vercel.app/ | ⚠️ 404 |
+| 📝 Todo List | https://04-to-do-eight.vercel.app/ | ✅ Live |
+
 ## 🚀 Deployment Plan (Vercel)
 
-Deploy each folder as a separate Vercel project from the same repository:
+1. Import the repo into Vercel.
+2. Deploy each folder as separate project root.
+3. Keep settings for static HTML demo:
+   - Build command: *(none)*
+   - Output directory: `.`
+4. Redeploy `Counter/` and `Profile-card/` after this update (now includes `index.html`).
 
-1. Import this repo in Vercel.
-2. Create one deployment per folder:
-	- `Counter/`
-	- `Expense/`
-	- `Profile-card/`
-	- `TO DO/`
-3. For static HTML demo deployments:
-	- Build command: *(none)*
-	- Output directory: `.`
-4. Add generated Vercel URLs to each README.
+## ✉️ Connect & Feedback
 
-## ✉️ Connect
+- GitHub: [@AshishCherian15](https://github.com/AshishCherian15)
+- Repository: [react-mini-projects](https://github.com/AshishCherian15/react-mini-projects)
 
-- GitHub: https://github.com/AshishCherian15
-- Repository: https://github.com/AshishCherian15/react-mini-projects
-
-Last Updated: March 2026 | Status: README Standardization ✅
+Last Updated: March 2026 | Status: Documentation + Vercel Entry Fixes ✅

@@ -5,7 +5,7 @@ React mini project built with React CDN + Babel (no npm setup required).
 ## 📌 Project Type
 
 - Original assignment version: `counter-app.html`
-- HTML website-style version for live demo: `counter-app.html`
+- HTML website-style version for live demo: `index.html`
 
 ## 🖼️ Screenshot
 
@@ -13,7 +13,7 @@ React mini project built with React CDN + Babel (no npm setup required).
 
 ## 🚀 Live Demo
 
-- Vercel: *(Add URL after deployment)*
+- Vercel: *(Pending update / currently returning 404)*
 
 ## ✨ Features
 
@@ -23,7 +23,7 @@ React mini project built with React CDN + Babel (no npm setup required).
 
 ## 🛠️ Run Locally
 
-1. Open `counter-app.html` in your browser.
+1. Open `index.html` in your browser.
 2. Interact with buttons to test all actions.
 
 ## 🌐 Deploy (Vercel)
@@ -36,5 +36,6 @@ React mini project built with React CDN + Babel (no npm setup required).
 ## 📁 Files
 
 - `counter-app.html`
+- `index.html`
 - `COUNTER.jpeg`
 - `README.md`

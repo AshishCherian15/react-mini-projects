@@ -13,7 +13,7 @@ React mini project for task management with filters and local storage support.
 
 ## 🚀 Live Demo
 
-- Vercel: *(Add URL after deployment)*
+- Vercel: [https://04-to-do-eight.vercel.app/](https://04-to-do-eight.vercel.app/)
 
 ## ✨ Features
 
