@@ -96,6 +96,28 @@ react-mini-projects/
 └── README.md
 ```
 
+## 🏆 Bootcamp Context
+
+Program: LetsUpgrade React Bootcamp Track  
+Focus: React fundamentals through assignment-based mini projects  
+Scope in this repository: Counter App, Expense Tracker, Profile Card, Todo List
+
+## ✅ LetsUpgrade Certificate Verification
+
+Certificate Holder: Ashish Cherian  
+Organizer: LetsUpgrade EdTech Pvt. Ltd.  
+Verification Link: [https://www.letsupgrade.in/verify](https://www.letsupgrade.in/verify)
+
+### Verified Workshop Mapping
+
+| Workshop / Assignment | Completion Date | Certificate No | Collaboration | Status |
+|---|---|---|---|---|
+| React Bootcamp (Counter App + Profile Card) | 11 December 2025 — 12 December 2025 (2 Days) | LUERJSDEC12530 | NSDC, ITM Edutech, GDG MAD | ✅ Completed |
+| React Expense Tracker Essentials Mini Project | 29 January 2026 | LUEETJAN12635 | NSDC, ITM Edutech, GDG MAD | ✅ Completed |
+| React To-Do List Essentials Mini Project | 10 January 2026 | LUETLADEC12548 | NSDC, ITM Edutech, GDG MAD | ✅ Completed |
+
+Verification note: Workshop and certificate information is compiled from the repository's archived LetsUpgrade source notes (`LU.txt` history) and project assignment records.
+
 ## 🌐 Live Deployments
 
 | Project | Live URL | Status |
