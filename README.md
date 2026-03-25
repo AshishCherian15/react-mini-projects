@@ -122,9 +122,9 @@ Verification note: Workshop and certificate information is compiled from the rep
 
 | Project | Live URL | Status |
 |---|---|---|
-| 🔢 Counter | Pending (update after redeploy) | ⚠️ 404 |
+| 🔢 Counter | https://01-counter-seven.vercel.app/ | ✅ Live |
 | 💸 Expense Tracker | https://02-expense.vercel.app/ | ✅ Live |
-| 🪪 Profile Card | https://03-profile-card.vercel.app/ | ⚠️ 404 |
+| 🪪 Profile Card | https://03-profile-card.vercel.app/ | ✅ Live |
 | 📝 Todo List | https://04-to-do-eight.vercel.app/ | ✅ Live |
 
 ## 🚀 Deployment Plan (Vercel)
